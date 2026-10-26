@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "igeoPublicDocs": {
+      "type": "http",
+      "url": "https://www.igeo.ai/api/docs-mcp/"
+    }
+  }
+}

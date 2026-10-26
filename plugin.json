@@ -1,0 +1,12 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "igeo.ai-public-docs",
+  "version": "0.1.0",
+  "description": "Research public igeo.ai product, pricing, and integration documentation with source links.",
+  "author": {
+    "name": "igeo.ai",
+    "url": "https://www.igeo.ai/"
+  },
+  "homepage": "https://www.igeo.ai/developers/",
+  "keywords": ["documentation", "mcp", "igeo.ai"]
+}
