@@ -11,6 +11,7 @@ Transport: Streamable HTTP with JSON responses. The server supports MCP `2025-11
 Choose the installation path your client supports:
 
 - **Agent Plugins v1:** load this directory as a plugin. Root `plugin.json` supplies metadata; `mcp.json` declares the remote server; `skills/` contains the skill. Support depends on the client.
+- **Cursor:** open this repository in Cursor to use its [project MCP configuration](.cursor/mcp.json), or copy the server entry into your project configuration. The server reads public documentation and requires no credentials.
 - **Existing MCP client:** add the HTTPS endpoint as a remote HTTP server. [examples/claude-code.mcp.json](examples/claude-code.mcp.json) uses Claude Code's `.mcp.json` format; [examples/vscode.mcp.json](examples/vscode.mcp.json) uses VS Code's `.vscode/mcp.json` format. Merge the server entry into existing configuration instead of replacing other servers.
 - **Skill only:** install `skills/igeo-public-docs/` using your client's Agent Skills workflow. The skill also supports reading the published website when MCP is unavailable.
 
