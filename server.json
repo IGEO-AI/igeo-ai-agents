@@ -1,0 +1,26 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.IGEO-AI/igeo-mcp",
+  "title": "igeo.ai",
+  "description": "Authorized AI search visibility, brand mentions, competitors, and content workflows for igeo.ai.",
+  "version": "1.0.0",
+  "websiteUrl": "https://www.igeo.ai/developers/mcp/",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://api.igeo.ai/mcp",
+      "headers": [
+        {
+          "name": "X-Workspace-Id",
+          "description": "Selected igeo.ai workspace ID; must match the authorized workspace.",
+          "isRequired": true,
+          "isSecret": false
+        }
+      ]
+    }
+  ],
+  "repository": {
+    "source": "github",
+    "url": "https://github.com/IGEO-AI/igeo-ai-agents"
+  }
+}

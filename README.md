@@ -62,3 +62,7 @@ The public documentation transport is stateless, with no SSE listener, sessions,
 - [VS Code MCP configuration](https://code.visualstudio.com/docs/agents/reference/mcp-configuration)
 
 For contributors, see [AGENTS.md](AGENTS.md). The server owns the runtime tools and documentation; check its current discovery and source pages when maintaining this bundle.
+
+## Workspace server registry metadata
+
+`server.json` identifies the authenticated workspace MCP endpoint. Its version follows the deployed workspace server card. The release workflow publishes changes to this manifest from the organization's main branch using GitHub OIDC. The public documentation client configurations connect to the separate anonymous endpoint described above.
