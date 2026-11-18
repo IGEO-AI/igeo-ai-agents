@@ -1,0 +1,30 @@
+name: Publish workspace MCP server
+on:
+  push:
+    branches: [main]
+    paths: [server.json]
+  workflow_dispatch:
+
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Verify release and publish to the official MCP Registry
+        shell: bash
+        run: |
+          set -euo pipefail
+          url=$(jq -er '.remotes[0].url' server.json)
+          test "$url" = 'https://api.igeo.ai/mcp'
+          version=$(jq -er .version server.json)
+          curl -fsS https://api.igeo.ai/.well-known/mcp/server-card.json |
+            jq -e --arg url "$url" --arg version "$version" '.serverUrl == $url and .version == $version and .authentication.required == true'
+          curl -fsSL https://github.com/modelcontextprotocol/registry/releases/download/v1.8.9/mcp-publisher_linux_amd64.tar.gz -o "$RUNNER_TEMP/publisher.tar.gz"
+          echo "4d527ca8f1ced0394c962dc925c2a4a4addef441cbefd62501c875e9481823a8  $RUNNER_TEMP/publisher.tar.gz" | sha256sum -c
+          tar -xzf "$RUNNER_TEMP/publisher.tar.gz" -C "$RUNNER_TEMP" mcp-publisher
+          "$RUNNER_TEMP/mcp-publisher" login github-oidc
+          "$RUNNER_TEMP/mcp-publisher" publish
